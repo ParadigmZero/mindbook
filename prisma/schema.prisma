@@ -1,0 +1,35 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Drizzle example of integrating
+// Supbase auth table but may not be a good idea...
+
+// export const Profile = pgTable("profile", {
+//     // Matches id from auth.users table in Supabase
+//     id: uuid("id")
+//         .primaryKey()
+//         .references(() => usersInAuth.id, { onDelete: "cascade" }),
+//     name: varchar("name", { length: 256 }).notNull(),
+//     email: varchar("email", { length: 256 }),
+// });
+
+model Profile {
+  id         Int    @id @default(autoincrement())
+  uuid       String @db.Uuid
+  givenName  String
+  familyName String
+  email      String
+}
