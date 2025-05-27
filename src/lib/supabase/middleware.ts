@@ -33,12 +33,12 @@ export async function updateSession(request: NextRequest) {
 
   // IMPORTANT: DO NOT REMOVE auth.getUser()
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
+  // DEACTIVATED AUTH middleware
 
+  // const {
+  //   data: { user },
+  // } = await supabase.auth.getUser()
 
-  // Joseph - deactivated AUTH middleware
   // if (
   //   !user &&
   //   !request.nextUrl.pathname.startsWith('/login') &&
@@ -49,6 +49,8 @@ export async function updateSession(request: NextRequest) {
   //   url.pathname = '/auth/login'
   //   return NextResponse.redirect(url)
   // }
+
+  // END DEACTIVATED AUTH
 
   // IMPORTANT: You *must* return the supabaseResponse object as it is.
   // If you're creating a new response object with NextResponse.next() make sure to:
