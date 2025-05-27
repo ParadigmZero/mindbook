@@ -2,8 +2,8 @@ import { redirect } from 'next/navigation'
 
 import { LogoutButton } from '@/components/logout-button'
 import { createClient } from '@/lib/supabase/server'
-import { PrismaClient } from '@/generated/prisma'
-import { withAccelerate } from "@prisma/extension-accelerate"
+// import { PrismaClient } from '@/generated/prisma'
+// import { withAccelerate } from "@prisma/extension-accelerate"
 import prisma from '@/lib/prisma'
 
 
