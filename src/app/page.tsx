@@ -2,7 +2,9 @@ import { redirect } from 'next/navigation'
 
 import { LogoutButton } from '@/components/logout-button'
 import { createClient } from '@/lib/supabase/server'
-import { prisma } from '@/lib/prisma'
+import { PrismaClient } from '@prisma/client'
+
+
 
 export default async function ProtectedPage() {
   const supabase = await createClient()
@@ -13,6 +15,8 @@ export default async function ProtectedPage() {
   // if (error || !data?.user) {
   //   redirect('/auth/login')
   // }
+
+  const prisma = new PrismaClient()
 
   const profile = await prisma.profile.findFirst();
 
