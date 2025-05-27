@@ -2,7 +2,9 @@ import { redirect } from 'next/navigation'
 
 import { LogoutButton } from '@/components/logout-button'
 import { createClient } from '@/lib/supabase/server'
-import { PrismaClient } from '@prisma/client'
+import { PrismaClient } from '@/generated/prisma'
+import { withAccelerate } from "@prisma/extension-accelerate"
+import prisma from '@/lib/prisma'
 
 
 
@@ -16,7 +18,7 @@ export default async function ProtectedPage() {
   //   redirect('/auth/login')
   // }
 
-  const prisma = new PrismaClient()
+
 
   const profile = await prisma.profile.findFirst();
 
