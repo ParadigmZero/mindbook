@@ -2,12 +2,7 @@ import { redirect } from 'next/navigation'
 
 import { LogoutButton } from '@/components/logout-button'
 import { createClient } from '@/lib/supabase/server'
-
-import { PrismaClient } from '@/generated/prisma'
-
-const prisma = new PrismaClient();
-
-
+import { prisma } from '@/lib/prisma'
 
 export default async function ProtectedPage() {
   const supabase = await createClient()
@@ -18,8 +13,6 @@ export default async function ProtectedPage() {
   // }
 
   const profile = await prisma.profile.findFirst();
-
-
 
   return (
     <div className="flex h-svh w-full items-center justify-center gap-2">
