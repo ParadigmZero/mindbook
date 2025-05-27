@@ -7,7 +7,9 @@ import { prisma } from '@/lib/prisma'
 export default async function ProtectedPage() {
   const supabase = await createClient()
 
+
   const { data, error } = await supabase.auth.getUser()
+  // seems little point here since middleware dealt with it.
   // if (error || !data?.user) {
   //   redirect('/auth/login')
   // }
